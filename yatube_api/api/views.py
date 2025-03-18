@@ -7,15 +7,15 @@ from rest_framework.permissions import (
 )
 from rest_framework.exceptions import ValidationError
 
-from posts.models import User, Post, Comment, Group, Follow
-from .serializers import (
-    UserSerializer,
-    PostSerializer,
+from posts.models import Comment, Follow, Group, Post, User
+from api.serializers import (
     CommentSerializer,
-    GroupSerializer,
     FollowSerializer,
+    GroupSerializer,
+    PostSerializer,
+    UserSerializer,
 )
-from .permissions import IsAuthorOrReadOnly, ReadOnly
+from api.permissions import IsAuthorOrReadOnly, ReadOnly
 
 
 class UserViewSet(viewsets.ReadOnlyModelViewSet):
