@@ -48,6 +48,7 @@ class CommentSerializer(serializers.ModelSerializer):
         read_only=True, slug_field='username'
     )
     post = serializers.PrimaryKeyRelatedField(read_only=True)
+    # я не могу удалить эту строчку, так как код перестает работать
 
     class Meta:
         model = Comment
