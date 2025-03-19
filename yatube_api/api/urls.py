@@ -8,14 +8,15 @@ from rest_framework_simplejwt.views import (
 
 from api.views import CommentViewSet, FollowViewSet, GroupViewSet, PostViewSet
 
-router = DefaultRouter()
-router.register(r'posts', PostViewSet)
-router.register(r'posts/(?P<post_id>\d+)/comments', CommentViewSet)
-router.register(r'follow', FollowViewSet)
-router.register(r'groups', GroupViewSet)
+v1_router = DefaultRouter()
+v1_router.register(r'posts', PostViewSet, basename='post')
+v1_router.register(r'posts/(?P<post_id>\d+)/comments', CommentViewSet,
+                   basename='comment')
+v1_router.register(r'follow', FollowViewSet, basename='follow')
+v1_router.register(r'groups', GroupViewSet, basename='group')
 
 urlpatterns = [
-    path('v1/', include(router.urls)),
+    path('v1/', include(v1_router.urls)),
     path(
         'v1/jwt/create/',
         TokenObtainPairView.as_view(),

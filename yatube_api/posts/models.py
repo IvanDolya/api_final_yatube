@@ -3,11 +3,13 @@ from django.db import models
 from django.core.exceptions import ValidationError
 
 User = get_user_model()
+MAX_LENGHT_TITLE = 200
+MAX_LENGHT_SLUG = 50
 
 
 class Group(models.Model):
-    title = models.CharField(max_length=200)
-    slug = models.SlugField(max_length=50, unique=True)
+    title = models.CharField(MAX_LENGHT_TITLE)
+    slug = models.SlugField(MAX_LENGHT_SLUG, unique=True)
     description = models.TextField()
 
     def __str__(self):
